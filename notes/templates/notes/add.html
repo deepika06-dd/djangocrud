@@ -1,0 +1,11 @@
+{% extends "notes/base.html" %}
+{% block title %}
+      Add Notes
+{% endblock  %}
+{% block content %}
+    <form action ="{% url 'notes:add' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input name='submit' type="submit" value="submit">
+    </form>
+{% endblock content %}

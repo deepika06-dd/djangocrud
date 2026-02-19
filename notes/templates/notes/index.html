@@ -1,0 +1,25 @@
+{% extends "notes/base.html" %}
+{% block content %}
+    <h3>Notes List</h3>
+    &lt;script&gt;
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        {% for n in notes %}
+            <tr>
+                <td>{{ n.title }}</td>
+                <td>{{ n.description | safe }}</td>
+                <td>
+                    <a href="#">Edit</a>
+                    |
+                    <a href="{% url 'notes:delete' n.id %}" onclick="return confirm('Are you sure to delete?')">Delete</a>
+                    |
+                    <a href="#">view</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
